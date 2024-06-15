@@ -1,0 +1,25 @@
+# Binaries
+/bin/
+/pkg/
+
+# Dependency directories (remove these if using Go Modules)
+/vendor/
+/Godeps/
+
+# IDE files
+.idea/
+.vscode/
+tmp/
+# Compiled output
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Logs and temporary files
+*.log
+*.out
+*.tmp
+
+# Ignore environment-specific files
+.env
