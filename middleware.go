@@ -1,4 +1,4 @@
-package flow
+package gorouter
 
 import (
 	"net/http"
@@ -14,7 +14,7 @@ func (mh *MiddlewareHandler) ServeHTTP(w http.ResponseWriter, req *http.Request)
 	mh.handler.ServeHTTP(w, req)
 }
 
-// Middleware represents a flow middleware function.
+// Middleware represents a gorouter middleware function.
 type Middleware func(http.Handler) http.Handler
 
 // ChainedMiddleware chains multiple middleware functions.

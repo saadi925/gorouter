@@ -1,5 +1,5 @@
-// flow/query_params.go
-package flow
+// gorouter/query_params.go
+package gorouter
 
 import (
 	"net/http"

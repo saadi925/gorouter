@@ -1,14 +1,20 @@
-package flow
+package gorouter
 
 import (
-	"log"
 	"net/http"
+
+	"github.com/sirupsen/logrus"
 )
 
-// RequestLogger logs incoming requests.
+var golog = logrus.New()
+
 func RequestLogger(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
-		log.Printf("Request: %s %s", req.Method, req.URL.Path)
+		golog.WithFields(logrus.Fields{
+			"method": req.Method,
+			"url":    req.URL.Path,
+			"remote": req.RemoteAddr,
+		}).Info("Received request")
 		next.ServeHTTP(w, req)
 	})
 }

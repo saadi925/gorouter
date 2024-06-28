@@ -1,4 +1,4 @@
-package flow
+package gorouter
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Router represents the flow router for managing routes.
+// Router represents the gorouter router for managing routes.
 type Router struct {
 	*http.ServeMux
 	middleware         []Middleware
@@ -20,7 +20,7 @@ type routeHandler struct {
 	dependencyRegistry *DependencyRegistry
 }
 
-// NewRouter creates a new instance of the flow router.
+// NewRouter creates a new instance of the gorouter router.
 func NewRouter() *Router {
 	return &Router{
 		middleware:         []Middleware{},

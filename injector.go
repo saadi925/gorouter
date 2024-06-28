@@ -1,4 +1,4 @@
-package flow
+package gorouter
 
 import (
 	"context"
@@ -35,8 +35,8 @@ func (dr *DependencyRegistry) Middleware(next http.Handler) http.Handler {
 	})
 }
 
-// GetDependencyFromContext retrieves a dependency from the request context.
-func GetDependencyFromContext(ctx context.Context, key string) (interface{}, error) {
+// GetDependency retrieves a dependency from the request context.
+func GetDependency(ctx context.Context, key string) (interface{}, error) {
 	val := ctx.Value(ContextKey(key))
 	if val == nil {
 		return nil, errors.New("dependency not found in context")

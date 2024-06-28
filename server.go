@@ -1,4 +1,4 @@
-package flow
+package gorouter
 
 import (
 	"crypto/tls"
@@ -17,7 +17,7 @@ type Server struct {
 	*http.Server
 }
 
-// ServerConfig represents configuration options for the flow server.
+// ServerConfig represents configuration options for the gorouter server.
 type ServerConfig struct {
 	Addr         string        // Server address (e.g., ":8080")
 	ReadTimeout  time.Duration // Read timeout for incoming requests
@@ -32,7 +32,7 @@ type TLSConfig struct {
 	KeyFile  string // Path to the SSL private key file
 }
 
-// NewServer creates a new instance of the flow server with the given configuration.
+// NewServer creates a new instance of the gorouter server with the given configuration.
 func NewServer(handler http.Handler, config ServerConfig) *Server {
 	server := &http.Server{
 		Addr:         config.Addr,
@@ -58,7 +58,7 @@ func NewServer(handler http.Handler, config ServerConfig) *Server {
 	}
 }
 
-// Start starts the flow server.
+// Start starts the gorouter server.
 func (s *Server) Start() error {
 	log.Printf("Server starting on address %s...", s.Addr)
 	if s.TLSConfig != nil {
@@ -90,7 +90,7 @@ func LoadConfig(file string) (*Config, error) {
 	return &config, nil
 }
 
-// Stop stops the flow server gracefully.
+// Stop stops the gorouter server gracefully.
 func (s *Server) Stop() error {
 	log.Println("Server shutting down gracefully...")
 	return s.Shutdown(nil)
